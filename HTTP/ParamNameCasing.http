@@ -1,0 +1,93 @@
+@HostAddress = http://localhost:5252
+
+## Minimal API - Parameter name casing
+
+### Query parameter name - lowercase (expect 200)
+GET {{HostAddress}}/query-param?name=hello
+Accept: application/json
+
+###
+
+### Query parameter name - uppercase (expect 200)
+GET {{HostAddress}}/query-param?Name=hello
+Accept: application/json
+
+###
+
+### Query parameter name - all caps (expect 200)
+GET {{HostAddress}}/query-param?NAME=hello
+Accept: application/json
+
+###
+
+### Form parameter name - lowercase (expect 200)
+POST {{HostAddress}}/form-param
+Content-Type: application/x-www-form-urlencoded
+
+name=hello
+
+###
+
+### Form parameter name - uppercase (expect 200)
+POST {{HostAddress}}/form-param
+Content-Type: application/x-www-form-urlencoded
+
+Name=hello
+
+###
+
+### Form parameter name - all caps (expect 200)
+POST {{HostAddress}}/form-param
+Content-Type: application/x-www-form-urlencoded
+
+NAME=hello
+
+###
+
+### Path parameter name - different casing (expect 200)
+GET {{HostAddress}}/path-param/hello
+Accept: application/json
+
+###
+
+### Path parameter name - different casing (expect 200)
+GET {{HostAddress}}/items/42
+Accept: application/json
+
+###
+
+## Controller-based API - Parameter name casing
+
+### Controller query parameter name - uppercase (expect 200)
+GET {{HostAddress}}/api/paramnames/query-param?Name=hello
+Accept: application/json
+
+###
+
+### Controller query parameter name - all caps (expect 200)
+GET {{HostAddress}}/api/paramnames/query-param?NAME=hello
+Accept: application/json
+
+###
+
+### Controller form parameter name - uppercase (expect 200)
+POST {{HostAddress}}/api/paramnames/form-param
+Content-Type: application/x-www-form-urlencoded
+
+Name=hello
+
+###
+
+### Controller form parameter name - all caps (expect 200)
+POST {{HostAddress}}/api/paramnames/form-param
+Content-Type: application/x-www-form-urlencoded
+
+NAME=hello
+
+###
+
+### Controller path parameter name - different casing (expect 200)
+GET {{HostAddress}}/api/paramnames/items/42
+Accept: application/json
+
+###

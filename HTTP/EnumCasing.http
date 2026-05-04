@@ -1,0 +1,227 @@
+@HostAddress = http://localhost:5252
+
+## Minimal API - Enum value casing
+
+### Route enum parameter - exact casing (expect 200)
+GET {{HostAddress}}/hello/Active/world
+Accept: application/json
+
+###
+
+### Route enum parameter - lowercase (expect 400)
+GET {{HostAddress}}/hello/active/world
+Accept: application/json
+
+###
+
+### Route enum parameter - uppercase (expect 400)
+GET {{HostAddress}}/hello/ACTIVE/world
+Accept: application/json
+
+###
+
+### Route enum parameter - non-enum segments case-insensitive (expect 200)
+GET {{HostAddress}}/HELLO/Active/WORLD
+Accept: application/json
+
+###
+
+### Query enum parameter - exact casing
+GET {{HostAddress}}/query?status=Active
+Accept: application/json
+
+###
+
+### Query enum parameter - lowercase
+GET {{HostAddress}}/query?status=active
+Accept: application/json
+
+###
+
+### Query enum parameter - uppercase
+GET {{HostAddress}}/query?status=ACTIVE
+Accept: application/json
+
+###
+
+### Header enum parameter - exact casing
+GET {{HostAddress}}/header
+X-Status: Active
+Accept: application/json
+
+###
+
+### Header enum parameter - lowercase
+GET {{HostAddress}}/header
+X-Status: active
+Accept: application/json
+
+###
+
+### Header enum parameter - uppercase
+GET {{HostAddress}}/header
+X-Status: ACTIVE
+Accept: application/json
+
+###
+
+### Form enum parameter - exact casing
+POST {{HostAddress}}/form
+Content-Type: application/x-www-form-urlencoded
+
+status=Active
+
+###
+
+### Form enum parameter - lowercase
+POST {{HostAddress}}/form
+Content-Type: application/x-www-form-urlencoded
+
+status=active
+
+###
+
+### Form enum parameter - uppercase
+POST {{HostAddress}}/form
+Content-Type: application/x-www-form-urlencoded
+
+status=ACTIVE
+
+###
+
+### JSON body - exact casing
+POST {{HostAddress}}/body
+Content-Type: application/json
+
+{"name": "test", "status": "Active"}
+
+###
+
+### JSON body - lowercase
+POST {{HostAddress}}/body
+Content-Type: application/json
+
+{"name": "test", "status": "active"}
+
+###
+
+### JSON body - uppercase
+POST {{HostAddress}}/body
+Content-Type: application/json
+
+{"name": "test", "status": "ACTIVE"}
+
+###
+
+### JSON body - numeric value
+POST {{HostAddress}}/body
+Content-Type: application/json
+
+{"name": "test", "status": 1}
+
+###
+
+## Controller-based API - Enum value casing
+
+### Controller route parameter - exact casing (expect 200)
+GET {{HostAddress}}/api/enum/Active/details
+Accept: application/json
+
+###
+
+### Controller route parameter - lowercase (expect 200 - case-insensitive)
+GET {{HostAddress}}/api/enum/active/details
+Accept: application/json
+
+###
+
+### Controller route parameter - uppercase (expect 200 - case-insensitive)
+GET {{HostAddress}}/api/enum/ACTIVE/details
+Accept: application/json
+
+###
+
+### Controller query parameter - exact casing
+GET {{HostAddress}}/api/enum/query?status=Active
+Accept: application/json
+
+###
+
+### Controller query parameter - lowercase
+GET {{HostAddress}}/api/enum/query?status=active
+Accept: application/json
+
+###
+
+### Controller query parameter - uppercase
+GET {{HostAddress}}/api/enum/query?status=ACTIVE
+Accept: application/json
+
+###
+
+### Controller header parameter - exact casing
+GET {{HostAddress}}/api/enum/header
+X-Status: Active
+Accept: application/json
+
+###
+
+### Controller header parameter - lowercase
+GET {{HostAddress}}/api/enum/header
+X-Status: active
+Accept: application/json
+
+###
+
+### Controller header parameter - uppercase
+GET {{HostAddress}}/api/enum/header
+X-Status: ACTIVE
+Accept: application/json
+
+###
+
+### Controller form parameter - exact casing
+POST {{HostAddress}}/api/enum/form
+Content-Type: application/x-www-form-urlencoded
+
+status=Active
+
+###
+
+### Controller form parameter - lowercase
+POST {{HostAddress}}/api/enum/form
+Content-Type: application/x-www-form-urlencoded
+
+status=active
+
+###
+
+### Controller form parameter - uppercase
+POST {{HostAddress}}/api/enum/form
+Content-Type: application/x-www-form-urlencoded
+
+status=ACTIVE
+
+###
+
+### Controller JSON body - exact casing
+POST {{HostAddress}}/api/enum/body
+Content-Type: application/json
+
+{"name": "test", "status": "Active"}
+
+###
+
+### Controller JSON body - lowercase
+POST {{HostAddress}}/api/enum/body
+Content-Type: application/json
+
+{"name": "test", "status": "active"}
+
+###
+
+### Controller JSON body - uppercase
+POST {{HostAddress}}/api/enum/body
+Content-Type: application/json
+
+{"name": "test", "status": "ACTIVE"}
